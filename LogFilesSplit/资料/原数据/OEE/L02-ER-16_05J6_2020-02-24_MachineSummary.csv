@@ -1,0 +1,3 @@
+SiteID,ProjectCode,TesterID,Lot Name,Login Mode,Date,Time,Input,Pass,Fail,Error#,Socket Usage,Socket Usage#
+NSTD,KK13,L02-ER-16_05J6,LOTNAME,OPERATOR,24/02/2020,00:00:07,0,0,0,0,0,0
+NSTD,KK13,L02-ER-16_05J6,LOTNAME,OPERATOR,24/02/2020,00:01:06,0,0,0,0,0,0
