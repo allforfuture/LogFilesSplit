@@ -31,12 +31,22 @@ namespace LogFilesSplit
             get { return txtDateKeyWord.Text; }
         }
 
+        DateTime oneOClock;
         public Main()
         {
             InitializeComponent();
             Text = Application.ProductName + " " + Application.ProductVersion;
             txtPath.Text= ConfigurationManager.AppSettings["path"];
             txtDateKeyWord.Text = ConfigurationManager.AppSettings["dateKeyWord"];
+            
+            #region 定时执行
+            string[] settingTime = ConfigurationManager.AppSettings["dailyRun"].Split(':');
+            int H = Convert.ToUInt16(settingTime[0]);
+            int M = Convert.ToUInt16(settingTime[1]);
+            int S = Convert.ToUInt16(settingTime[2]);
+            oneOClock = DateTime.Today.AddHours(H).AddMinutes(M).AddSeconds(S);
+            SetTaskAtFixedTime();
+            #endregion
         }
 
         private void btnRun_Click(object sender, EventArgs e)
@@ -69,11 +79,38 @@ namespace LogFilesSplit
                     }
                     barFiles.Value++;
                 }
+                dtpLastRun.Value = DateTime.Now;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+
+        void SetTaskAtFixedTime()
+        {
+            DateTime now = DateTime.Now;
+            if (now > oneOClock)
+            {
+                oneOClock = oneOClock.AddDays(1);
+                //oneOClock = oneOClock.AddSeconds(10);
+            }
+            int msUntilFour = (int)((oneOClock - now).TotalMilliseconds);
+
+            var t = new System.Threading.Timer(DoAtTime);
+            t.Change(msUntilFour, System.Threading.Timeout.Infinite);
+        }
+
+        //要执行的任务
+        void DoAtTime(object state)
+        {
+            //System.InvalidOperationException:“线程间操作无效: 从不是创建控件“TxtTotal
+            Invoke(new Action(() =>
+            {
+                btnRun_Click(new object(), new EventArgs());
+            }));
+            //再次设定下一次定时
+            SetTaskAtFixedTime();
         }
     }
 }

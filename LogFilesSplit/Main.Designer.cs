@@ -34,12 +34,14 @@
             this.txtDateKeyWord = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.barFiles = new System.Windows.Forms.ProgressBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpLastRun = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 12);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 0;
@@ -47,11 +49,11 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(492, 7);
+            this.btnRun.Location = new System.Drawing.Point(471, 7);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(75, 23);
             this.btnRun.TabIndex = 10;
-            this.btnRun.Text = "运行";
+            this.btnRun.Text = "手动运行";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
@@ -64,7 +66,7 @@
             // 
             // txtDateKeyWord
             // 
-            this.txtDateKeyWord.Location = new System.Drawing.Point(97, 34);
+            this.txtDateKeyWord.Location = new System.Drawing.Point(97, 38);
             this.txtDateKeyWord.Name = "txtDateKeyWord";
             this.txtDateKeyWord.Size = new System.Drawing.Size(350, 21);
             this.txtDateKeyWord.TabIndex = 14;
@@ -72,7 +74,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 37);
+            this.label11.Location = new System.Drawing.Point(12, 40);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 12);
             this.label11.TabIndex = 13;
@@ -80,16 +82,37 @@
             // 
             // barFiles
             // 
-            this.barFiles.Location = new System.Drawing.Point(16, 61);
+            this.barFiles.Location = new System.Drawing.Point(12, 96);
             this.barFiles.Name = "barFiles";
             this.barFiles.Size = new System.Drawing.Size(551, 23);
             this.barFiles.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 12);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "上次执行时间：";
+            // 
+            // dtpLastRun
+            // 
+            this.dtpLastRun.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dtpLastRun.Enabled = false;
+            this.dtpLastRun.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpLastRun.Location = new System.Drawing.Point(97, 67);
+            this.dtpLastRun.Name = "dtpLastRun";
+            this.dtpLastRun.Size = new System.Drawing.Size(200, 21);
+            this.dtpLastRun.TabIndex = 17;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 91);
+            this.ClientSize = new System.Drawing.Size(584, 134);
+            this.Controls.Add(this.dtpLastRun);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.barFiles);
             this.Controls.Add(this.txtDateKeyWord);
             this.Controls.Add(this.label11);
@@ -111,6 +134,8 @@
         private System.Windows.Forms.TextBox txtDateKeyWord;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ProgressBar barFiles;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpLastRun;
     }
 }
 
