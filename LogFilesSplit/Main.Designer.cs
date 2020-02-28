@@ -98,7 +98,7 @@
             // 
             // dtpLastRun
             // 
-            this.dtpLastRun.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            this.dtpLastRun.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dtpLastRun.Enabled = false;
             this.dtpLastRun.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpLastRun.Location = new System.Drawing.Point(97, 67);
