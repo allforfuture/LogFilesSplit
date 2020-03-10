@@ -51,6 +51,7 @@ namespace LogFilesSplit
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            string f = "";
             try
             {
                 DirectoryInfo root = new DirectoryInfo(path);
@@ -59,7 +60,7 @@ namespace LogFilesSplit
                 barFiles.Maximum = files.Length;
                 foreach (FileInfo file in files)
                 {
-                    string f = file.Name;
+                    f = file.Name;
 
                     for (int i = 0; i <= f.Length - dateFormat.Length; i++)
                     {
@@ -83,7 +84,7 @@ namespace LogFilesSplit
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(f + "\r\n" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
